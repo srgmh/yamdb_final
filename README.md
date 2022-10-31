@@ -1,3 +1,6 @@
+![yamdb_workflow](https://github.com/srgmh/yamdb_final/actions/workflows/yamdb_workflow/badge.svg)
+
+
 # API для сервиса API_YAMDB
 
 ## Описание:
