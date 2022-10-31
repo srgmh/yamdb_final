@@ -1,4 +1,4 @@
-![yamdb_workflow](https://github.com/srgmh/yamdb_final/actions/workflows/yamdb_workflow/badge.svg)
+![yamdb_workflow](https://github.com/srgmh/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 
 # API для сервиса API_YAMDB
