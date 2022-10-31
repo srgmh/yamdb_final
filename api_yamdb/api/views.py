@@ -14,20 +14,13 @@ from api_yamdb.settings import DOMAIN_NAME
 
 from .filters import TitleFilter
 from .mixins import ListCreateDestroyViewSet
-from .permissions import (
-    IsAdmin, IsAdminOrReadOnly, NobodyAllow, IsAdminModeratorOwnerOrReadOnly
-)
-from .serializers import (
-    CategorySerializer,
-    CommentSerializer,
-    GenreSerializer,
-    ReviewSerializer,
-    TitleReadSerializer,
-    TitleWriteSerializer,
-    TokenGeneratorSerialiser,
-    UserForUserSerializer,
-    UserSerializer
-)
+from .permissions import (IsAdmin, IsAdminModeratorOwnerOrReadOnly,
+                          IsAdminOrReadOnly, NobodyAllow)
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, ReviewSerializer,
+                          TitleReadSerializer, TitleWriteSerializer,
+                          TokenGeneratorSerialiser, UserForUserSerializer,
+                          UserSerializer)
 
 EMAIL_THEME = 'Подтверждающий код для API YAMDB'
 EMAIL_FROM = f'from@{DOMAIN_NAME}'
@@ -43,7 +36,7 @@ class CodeTokenClass(viewsets.ModelViewSet):
         detail=False, methods=['post'],
         url_path='signup', permission_classes=(AllowAny, )
     )
-    def CodGenerator(self, request):
+    def codgenerator(self, request):
         """Функция генерациии кода по юзернейму и email."""
         confirmation_code = str(uuid.uuid4())
         username = request.data.get('username')
@@ -82,7 +75,7 @@ class CodeTokenClass(viewsets.ModelViewSet):
         detail=False, methods=['post'],
         url_path='token', permission_classes=(AllowAny, )
     )
-    def TokenGenerator(self, request):
+    def tokengenerator(self, request):
         """Функция генерациии токена по юзернейму и коду."""
         serializer = TokenGeneratorSerialiser(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -190,8 +183,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         title = get_object_or_404(Title, id=self.kwargs.get('title_id'))
-        new_queryset = title.reviews.all()
-        return new_queryset
+        return title.reviews.all()
 
     def perform_create(self, serializer):
         title = get_object_or_404(
@@ -208,8 +200,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         review = get_object_or_404(Review, pk=self.kwargs.get('review_id'))
-        new_queryset_comments = review.comments.all()
-        return new_queryset_comments
+        return review.comments.all()
 
     def perform_create(self, serializer):
         title_id = self.kwargs.get('title_id')
