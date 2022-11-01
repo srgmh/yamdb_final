@@ -1,5 +1,10 @@
 ![yamdb_workflow](https://github.com/srgmh/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
+### Проект развёрнут на удалённом сервере:
+http://84.201.167.175/
+
+http://84.201.167.175/redoc/ - документация по API
+
 
 # API для сервиса API_YAMDB
 
