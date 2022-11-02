@@ -35,7 +35,7 @@ jobs:
   build_and_push_to_docker_hub:
     runs-on: ubuntu-latest
     needs: tests
-    if: github.ref == 'refs/heads/masterrr'
+    if: github.ref == 'refs/heads/master'
 
     steps:
       - name: Check out the repo
